@@ -1,21 +1,25 @@
 import $ from 'jQuery';
 
-$(document).ready(function() {
-    var alert = $('.module-flashmessage');
+class RibsFlashMessage {
+  static displayFlash() {console.log("d");
+    const flash = $('.module-flashmessage');
     
-    if (alert.length > 0) {
-        alert.hide().slideDown(500);
-        
-        alert.click(function() {
-            $(this).slideUp();
-        });
-        
-        setTimeout(function() {
-            $(".module-flashmessage").slideUp();
-        }, 10000);
-        
-        setTimeout(function() {
-            $(".module-flashmessage").remove();
-        }, 12000)
+    if (flash.length > 0) {
+      flash.hide().slideDown(500);
+  
+      flash.click(function() {
+        $(this).slideUp();
+      });
+  
+      setTimeout(function() {
+        $(".module-flashmessage").slideUp();
+      }, 10000);
+  
+      setTimeout(function() {
+        $(".module-flashmessage").remove();
+      }, 12000)
     }
-});
+  }
+}
+
+RibsFlashMessage.displayFlash();
