@@ -1,21 +1,25 @@
 import $ from 'jQuery';
 
-document.addEventListener("DOMContentLoaded", () => {
-    const flashMessage = $('.RibsFlashMessage');
+class RibsFlashMessage {
+  static displayFlash() {
+    const flash = $('.RibsFlashMessage');
     
-    if (flashMessage.length > 0) {
-        flashMessage.hide().slideDown(500);
-    
-        flashMessage.click((event) => {
-            $(event.currentTarget).slideUp();
-        });
-        
-        setTimeout(() => {
-            flashMessage.slideUp();
-        }, 10000);
-        
-        setTimeout(() => {
-            flashMessage.remove();
-        }, 12000)
+    if (flash.length > 0) {
+      flash.hide().slideDown(500);
+  
+      flash.click(function() {
+        $(this).slideUp();
+      });
+  
+      setTimeout(function() {
+          flash.slideUp();
+      }, 10000);
+  
+      setTimeout(function() {
+          flash.remove();
+      }, 12000)
     }
-});
+  }
+}
+
+RibsFlashMessage.displayFlash();
