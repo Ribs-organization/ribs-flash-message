@@ -17,9 +17,10 @@ class RibsFlashMessage {
   
       setTimeout(function() {
           flash.remove();
-      }, 12000)
+      }, 12000);
     }
   }
 }
+export default (RibsFlashMessage);
 
 RibsFlashMessage.displayFlash();
