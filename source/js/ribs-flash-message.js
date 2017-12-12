@@ -1,21 +1,21 @@
 import $ from 'jQuery';
 
-$(document).ready(function() {
-    var alert = $('.module-flashmessage');
+document.addEventListener("DOMContentLoaded", () => {
+    const flashMessage = $('.RibsFlashMessage');
     
-    if (alert.length > 0) {
-        alert.hide().slideDown(500);
-        
-        alert.click(function() {
-            $(this).slideUp();
+    if (flashMessage.length > 0) {
+        flashMessage.hide().slideDown(500);
+    
+        flashMessage.click((event) => {
+            $(event.currentTarget).slideUp();
         });
         
-        setTimeout(function() {
-            $(".module-flashmessage").slideUp();
+        setTimeout(() => {
+            flashMessage.slideUp();
         }, 10000);
         
-        setTimeout(function() {
-            $(".module-flashmessage").remove();
+        setTimeout(() => {
+            flashMessage.remove();
         }, 12000)
     }
 });
