@@ -7,6 +7,9 @@ class RibsFlashMessage {
 		this.displayFlash();
 	}
 
+	/**
+	 * mathod to set top position of flashes message when there more than 1 flash displayed
+	 */
 	setFlashPosition() {
 		const initialTop = 40;
 		const nextTop = initialTop / 2;
@@ -25,6 +28,9 @@ class RibsFlashMessage {
 		});
 	}
 
+	/**
+	 * method to display all flash message
+	 */
 	displayFlash() {
 		const flash = this.flash;
 
