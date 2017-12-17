@@ -11,7 +11,7 @@ class RibsFlashMessage {
 	}
 
 	/**
-	 * mathod to set top position of flashes message when there more than 1 flash displayed
+	 * method to set top position of flashes message when there more than 1 flash displayed
 	 */
 	setFlashPosition() {
 		const initialTop = 40;
