@@ -3,8 +3,11 @@ import $ from 'jQuery';
 class RibsFlashMessage {
 	constructor() {
 		this.flash = $('.RibsFlashMessage');
-		this.setFlashPosition();
-		this.displayFlash();
+
+		if (this.flash.length > 0) {
+			this.setFlashPosition();
+			this.displayFlash();
+		}
 	}
 
 	/**
