@@ -1,12 +1,10 @@
-import $ from 'jQuery';
-
 class RibsFlashMessage {
 	constructor() {
 		this.flash = document.getElementsByClassName('RibsFlashMessage');
 
 		if (this.flash) {
 			this.setFlashPosition();
-			/*this.displayFlash();*/
+			this.displayFlash();
 		}
 	}
   
@@ -42,28 +40,47 @@ class RibsFlashMessage {
 			}
 		});
 	}
+  
+  /**
+   * @param element
+   * @param duration
+   * this method do animation on height when displaying an element
+   * if max height = none it show the element else this function hide it
+   */
+	toggleSlide(element, duration) {
+    let maxHeight = 0;
+	  
+	  if (window.getComputedStyle(element).getPropertyValue('max-height') === 'none') {
+      maxHeight = this.getHeight(element);
+    }
+    
+    element.style.transition = 'max-height 0.5s ease-in-out';
+    element.style.maxHeight = 0;
+    element.style.display = 'block';
+    
+    setTimeout(function() {
+      element.style.maxHeight = `${maxHeight}px`;
+    }, duration)
+  }
+  
 
 	/**
 	 * method to display all flash message
 	 */
 	displayFlash() {
-		const flash = this.flash;
-
-		if (flash.length > 0) {
-			flash.hide().slideDown(500);
-
-			flash.click(function () {
-				$(this).slideUp();
-			});
-
-			setTimeout(function () {
-				flash.slideUp();
-			}, 10000);
-
-			setTimeout(function () {
-				flash.remove();
-			}, 12000);
-		}
+	  const self = this;
+	  
+    Array.from(this.flash).forEach((element, index) => {
+      this.toggleSlide(element, 500);
+  
+      setTimeout(function () {
+        self.toggleSlide(element, 500);
+      }, 10000);
+  
+      setTimeout(function () {
+        element.remove();
+      }, 12000);
+    });
 	}
 }
 export default (RibsFlashMessage);
