@@ -2,31 +2,43 @@ import $ from 'jQuery';
 
 class RibsFlashMessage {
 	constructor() {
-		this.flash = $('.RibsFlashMessage');
+		this.flash = document.getElementsByClassName('RibsFlashMessage');
 
-		if (this.flash.length > 0) {
+		if (this.flash) {
 			this.setFlashPosition();
-			this.displayFlash();
+			/*this.displayFlash();*/
 		}
 	}
+  
+  /**
+   * @param element
+   * @returns {Number}
+   * function that return height of an element that is no displayed
+   */
+	getHeight(element) {
+	  element.style.display = 'block';
+	  let height = parseInt(window.getComputedStyle(element).getPropertyValue('height'));
+    element.style.display = '';
+    
+    return height;
+  }
 
 	/**
 	 * method to set top position of flashes message when there more than 1 flash displayed
 	 */
 	setFlashPosition() {
-		const initialTop = 40;
-		const nextTop = initialTop / 2;
-		let topPos = this.flash.position().top;
-
-		this.flash.each((index, element) => {
+		const initialTop = 20;
+		let topPos = parseInt(window.getComputedStyle(this.flash[0]).getPropertyValue('top'));
+    
+    Array.from(this.flash).forEach((element, index) => {
 			if (index === 0) {
-				topPos += $(element).height();
+				topPos += this.getHeight(element);
 			} else {
 				let top = initialTop + topPos;
+				
+				element.style.top = `${top}px`;
 
-				$(element).css({top: `${top}px`});
-
-				topPos += nextTop + $(element).height();
+				topPos += initialTop + this.getHeight(element);;
 			}
 		});
 	}
