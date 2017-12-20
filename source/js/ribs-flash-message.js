@@ -1,3 +1,5 @@
+import 'babel-polyfill'
+
 class RibsFlashMessage {
 	constructor() {
 		this.flash = document.getElementsByClassName('RibsFlashMessage');

@@ -17,8 +17,11 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        include: path.join(__dirname, 'assets/'),
+        include: path.join(__dirname, 'source/'),
         loader: 'babel-loader',
+        query: {
+          presets: ['env']
+        }
       },
       {
         test: /\.scss$/,
