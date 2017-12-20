@@ -12,7 +12,7 @@ npm install ribs-flash-message
 
 You have just to add followings lines to you head in html
 ```HTML
-<link rel="stylesheet" src="node_modules/ribs-checkbox/dist/csss/style.css" />
+<link rel="stylesheet" src="node_modules/ribs-checkbox/dist/css/style.css" />
 ```
 
 And in you file you have can use those blocks 
