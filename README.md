@@ -12,7 +12,7 @@ npm install ribs-flash-message
 
 You have just to add followings lines to you head in html
 ```HTML
-<script src="node_modules/ribs-checkbox/dist/js/ribs-flash-message.js"></script>
+<link rel="stylesheet" src="node_modules/ribs-checkbox/dist/csss/style.css" />
 ```
 
 And in you file you have can use those blocks 
@@ -62,5 +62,5 @@ And in you file you have can use those blocks
 
 At the end of the body you have to add this script
 ```HTML
-<script src="node_modules/ribs-checkbox/dist/js/RibsFlashMessage.js"></script>
+<script src="node_modules/ribs-checkbox/dist/js/ribs-flash-message.js"></script>
 ```
