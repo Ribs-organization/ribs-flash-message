@@ -16,8 +16,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        include: path.join(__dirname, 'source/'),
+        include: [path.join(__dirname, 'source/'), path.join(__dirname, 'node_modules/ribs-core/')],
         loader: 'babel-loader',
         query: {
           presets: ['env']
