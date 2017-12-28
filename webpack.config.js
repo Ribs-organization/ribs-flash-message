@@ -8,7 +8,7 @@ const extractSass = new ExtractTextPlugin({
 });
 
 module.exports = {
-  entry: ['babel-polyfill', './source/scss/style.scss', './source/js/ribs-flash-message.js'],
+  entry: ['./source/scss/style.scss', './source/js/ribs-flash-message.js'],
   output: {
     filename: 'dist/js/ribs-flash-message.js'
   },
@@ -17,10 +17,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: [path.join(__dirname, 'source/'), path.join(__dirname, 'node_modules/ribs-core/')],
-        loader: 'babel-loader',
-        query: {
-          presets: ['env']
-        }
+        loader: 'babel-loader'
       },
       {
         test: /\.scss$/,
