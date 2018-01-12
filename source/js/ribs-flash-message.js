@@ -5,7 +5,7 @@ class RibsFlashMessage {
 	constructor() {
 		this.flash = document.getElementsByClassName('RibsFlashMessage');
 
-		if (this.flash) {
+		if (this.flash.length > 0) {
 			this.setFlashPosition();
 			this.displayFlash();
 		}
