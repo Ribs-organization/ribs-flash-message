@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import RibsCore from 'ribs-core';
 
 class RibsFlashMessage {
@@ -8,6 +7,7 @@ class RibsFlashMessage {
 		if (this.flash.length > 0) {
 			this.setFlashPosition();
 			this.displayFlash();
+			this.closeFlash();
 		}
 	}
 
@@ -46,6 +46,17 @@ class RibsFlashMessage {
         element.remove();
       }, 12000);
     });
+	}
+
+  /**
+	 * method to close a flash message
+   */
+	closeFlash() {
+    Array.from(this.flash).forEach((element, index) => {
+    	element.addEventListener('click', (event) => {
+        RibsCore.toggleSlide(element, 500);
+			});
+		})
 	}
 }
 export default (RibsFlashMessage);
