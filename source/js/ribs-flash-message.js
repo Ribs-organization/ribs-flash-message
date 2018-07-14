@@ -1,64 +1,107 @@
 import RibsCore from 'ribs-core';
 
 class RibsFlashMessage {
-	constructor() {
-		this.flash = document.getElementsByClassName('RibsFlashMessage');
+  constructor() {
+    this.template = `
+      <div class="notification">
+        <div class="left">
+          <div class="icone">
+            <i class='fa'></i>
+          </div>
+        </div>
+        <div class="right">
+          <p></p>
+        </div>
+      </div>
+    `;
 
-		if (this.flash.length > 0) {
-			this.setFlashPosition();
-			this.displayFlash();
-			this.closeFlash();
-		}
-	}
+    this.topPos = 20;
+    this.initialTop = 20;
 
-	/**
-	 * method to set top position of flashes message when there more than 1 flash displayed
-	 */
-	setFlashPosition() {
-		const initialTop = 20;
-		let topPos = parseInt(window.getComputedStyle(this.flash[0]).getPropertyValue('top'));
+    this.lauchFlashes();
+  }
+
+  /**
+   * method to launch all flashes
+   */
+  lauchFlashes() {
+    this.flash = document.querySelectorAll('.RibsFlashMessage:not(.displayed)');
+
+    if (this.flash.length > 0) {
+      this.setFlashPosition();
+      this.displayFlash();
+      this.closeFlash();
+    }
+  }
+
+  /**
+   * method to set top position of flashes message when there more than 1 flash displayed
+   */
+  setFlashPosition() {
+    const initialTop = 20;
 
     Array.from(this.flash).forEach((element, index) => {
-			if (index === 0) {
-				topPos += RibsCore.getHeight(element);
-			} else {
-				let top = initialTop + topPos;
+      if (index === 0 && this.topPos === initialTop) {
+        this.topPos += RibsCore.getHeight(element);
+      } else {
+        let top = initialTop + this.topPos;
 
-				element.style.top = `${top}px`;
+        element.style.top = `${top}px`;
 
-				topPos += initialTop + RibsCore.getHeight(element);;
-			}
-		});
-	}
+        this.topPos += initialTop + RibsCore.getHeight(element);
+      }
+    });
+  }
 
-	/**
-	 * method to display all flash message
-	 */
-	displayFlash() {
+  /**
+   * method to display all flash message
+   */
+  displayFlash() {
     Array.from(this.flash).forEach((element, index) => {
       RibsCore.toggleSlide(element, 500);
+      element.classList.add('displayed');
+      let that = this;
 
-      setTimeout(function () {
+      setTimeout(() => {
+        that.topPos -= parseInt(RibsCore.getHeight(element), 10) + parseInt(that.initialTop, 10);
         RibsCore.toggleSlide(element, 500);
       }, 10000);
 
-      setTimeout(function () {
+      setTimeout(() => {
         element.remove();
       }, 12000);
     });
-	}
+  }
 
   /**
-	 * method to close a flash message
+   * method to close a flash message
    */
-	closeFlash() {
+  closeFlash() {
     Array.from(this.flash).forEach((element, index) => {
-    	element.addEventListener('click', (event) => {
+      element.addEventListener('click', (event) => {
         RibsCore.toggleSlide(element, 500);
-			});
-		})
-	}
+      });
+    })
+  }
+
+  /**
+   * @param message
+   * @param type
+   * method to append a flash message directly in your js script
+   */
+  append(message, type) {
+    const div = document.createElement('div');
+    div.classList.add('RibsFlashMessage');
+    div.innerHTML = this.template;
+
+    div.querySelector('p').innerText = message;
+    div.classList.add(type);
+    document.querySelector('body').appendChild(div);
+
+    this.lauchFlashes();
+  }
 }
+
 export default (RibsFlashMessage);
 
 const ribsFlashMessage = new RibsFlashMessage();
