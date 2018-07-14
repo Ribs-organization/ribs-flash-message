@@ -3,14 +3,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
-  filename: "./dist/css/style.css",
+  filename: "./css/style.css",
   disable: process.env.NODE_ENV === "development"
 });
 
 module.exports = {
   entry: ['./source/scss/style.scss', './source/js/ribs-flash-message.js'],
   output: {
-    filename: 'dist/js/ribs-flash-message.js'
+    filename: 'js/ribs-flash-message.js'
   },
   module: {
     rules: [
