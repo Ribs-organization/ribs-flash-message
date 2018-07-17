@@ -94,7 +94,17 @@ class RibsFlashMessage {
     div.classList.add('RibsFlashMessage');
     div.innerHTML = this.template;
 
+    let icone = '';
+    if (type === 'error') {
+      icone = 'fa-times'
+    } else if (type === 'info') {
+      icone = 'fa-info'
+    } else if (type === 'success') {
+      icone = 'fa-check'
+    }
+
     div.querySelector('p').innerText = message;
+    div.querySelector('i').classList.add(icone);
     div.classList.add(type);
     document.querySelector('body').appendChild(div);
 
