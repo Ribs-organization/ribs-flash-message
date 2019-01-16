@@ -19,6 +19,10 @@ $clr-txt: #fff;
 	border-radius: 2px;
 	overflow: hidden;
 	box-shadow: 0px 4px 20px rgba(0,0,0, 0.5);
+
+	@media all and (max-width: 576px) {
+		width: 90%;
+	}
 	
 	&.error  {
 		background-color: #FA565D;
@@ -84,7 +88,7 @@ $clr-txt: #fff;
 			p {
 				padding: inherit;
 				margin: inherit;
-				font-family: "Arial", arial;
+				font-family: "Arial", arial, serif;
 				clear: both;
 				margin-left: 0px;
 			}
@@ -95,7 +99,7 @@ $clr-txt: #fff;
 					margin: inherit;
 					padding: 10px 10px;
 					float: left;
-					font-family: "Arial", arial;
+					font-family: "Arial", arial, serif;
 					clear: both;
 					
 					&:first-child {

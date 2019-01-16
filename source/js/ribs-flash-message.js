@@ -85,9 +85,9 @@ class RibsFlashMessage {
   }
 
   /**
+   * method to append a flash message directly in your js script
    * @param message
    * @param type
-   * method to append a flash message directly in your js script
    */
   append(message, type) {
     const div = document.createElement('div');
