@@ -1,6 +1,6 @@
 {
   "name": "ribs-flash-message",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "This module is used to display little notification message",
   "main": "source/js/ribs-flash-message.js",
   "scripts": {
@@ -42,7 +42,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1"
   },
   "dependencies": {
-    "ribs-core": "0.0.8",
+    "ribs-core": "*",
     "font-awesome": "^4.7.0"
   }
 }

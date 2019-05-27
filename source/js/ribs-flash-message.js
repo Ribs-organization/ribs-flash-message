@@ -112,6 +112,4 @@ class RibsFlashMessage {
   }
 }
 
-export default (RibsFlashMessage);
-
-const ribsFlashMessage = new RibsFlashMessage();
+export default RibsFlashMessage;
