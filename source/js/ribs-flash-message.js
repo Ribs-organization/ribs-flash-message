@@ -67,9 +67,7 @@ class RibsFlashMessage {
         RibsCore.toggleSlide(element, 500);
       }, 10000);
 
-      setTimeout(() => {
-        element.remove();
-      }, 12000);
+      this.removeFlash(element);
     });
   }
 
@@ -80,8 +78,20 @@ class RibsFlashMessage {
     Array.from(this.flash).forEach((element, index) => {
       element.addEventListener('click', (event) => {
         RibsCore.toggleSlide(element, 500);
+        this.removeFlash(element, 700);
       });
     })
+  }
+
+  /**
+   * method to remove a flash
+   * @param element
+   * @param timer
+   */
+  removeFlash(element, timer = 12000) {
+    setTimeout(() => {
+      element.remove();
+    }, timer);
   }
 
   /**
