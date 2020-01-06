@@ -57,6 +57,7 @@ $clr-txt: #fff;
 			top: 0;
 			left: 0;
 			border-right: 1px solid rgba(0, 0, 0, 0.2);
+			float: inherit;
 			
 			/*for icons*/
 			.icone {
@@ -69,6 +70,7 @@ $clr-txt: #fff;
 		
 		.right {
 			margin-left: 50px;
+			float: inherit;
 			
 			p {
 				padding: inherit;
