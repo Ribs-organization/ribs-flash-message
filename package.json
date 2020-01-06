@@ -1,6 +1,6 @@
 {
   "name": "ribs-flash-message",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "This module is used to display little notification message",
   "main": "source/js/ribs-flash-message.js",
   "scripts": {
